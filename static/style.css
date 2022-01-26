@@ -1,0 +1,72 @@
+/* TODO: center button */
+
+body {
+  background-color: lightgray;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+  font-family:  "Times New Roman", Times, serif;
+}
+
+h3 {
+  color: black;
+  text-align: center;
+  font-family:  "Times New Roman", Times, serif;  
+  font-size: 20px;
+}
+
+/* Is this useful?? */
+p{
+ text-align: "center";
+}
+
+button {
+  background-color: darkgray;
+  border: none;
+  color: white;
+  box-align: center;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; 
+}
+
+button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+div {
+  padding: 20px;
+}
+
+b{
+  font-family:  "Times New Roman", Times, serif;
+}
+
+#customers {
+  font-family:  "Times New Roman", Times, serif; 
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* #customers tr:nth-child(even){background-color: #f2f2f2;} */
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: darkgray;
+  color: white;
+}
