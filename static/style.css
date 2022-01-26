@@ -1,7 +1,7 @@
 /* TODO: center button */
 
 body {
-  background-color: lightgray;
+  background-color: lightblue;
 }
 
 h1 {
@@ -23,7 +23,7 @@ p{
 }
 
 button {
-  background-color: darkgray;
+  background-color: darkblue;
   border: none;
   color: white;
   box-align: center;
@@ -48,6 +48,10 @@ b{
   font-family:  "Times New Roman", Times, serif;
 }
 
+table{
+    text-align: "center";
+}
+
 #customers {
   font-family:  "Times New Roman", Times, serif; 
   border-collapse: collapse;
@@ -67,6 +71,6 @@ b{
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: darkgray;
+  background-color: darkblue;
   color: white;
 }

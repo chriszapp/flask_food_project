@@ -9,17 +9,12 @@ app = Flask(  # Create a flask app
 	static_folder='static'  # Name of directory for static files
 )
 
-students = pd.read_csv('StudentsPerformance.csv')
+# Initialize global variables
+products = pd.read_csv('openfoodfacts_products.csv')
 
-math_mean = round(students['math score'].mean())
-read_mean = round(students['reading score'].mean())
-write_mean = round(students['writing score'].mean())
-
-def check_positioning (student_score, subject):
-  return 'Congratulation, you are among the best 10% of the school!!' if student_score >= students[subject + ' score'].quantile(0.9) else \
-  'Congratulation, you are among the best 25% of the school!' if student_score >= students[subject + ' score'].quantile(0.75) else\
-   "It's a good result, but keep improving!" if student_score >= 60 else\
-   'Not yet, keep working!'
+# Define functions
+def filtering_df(strng, dframe):
+    return dframe[dframe['id'] == strng]
 
 ## Make App working
 @app.route("/")
@@ -28,40 +23,22 @@ def landing_page():
 
 @app.route("/enter_login")
 def enter_login():
-  # print("in enter_login")
   return render_template('login_page.html')
 
-@app.route('/', methods=['GET', 'POST'])
-def login_page():
-  print('in login')
-  student_data = {}
+@app.route('/search', methods=['GET', 'POST'])
+def enter_search():
   if request.method == 'POST':
-
     if int(request.form['s_code']) < 1000 and int(request.form['s_code']) >= 0:
-      
-      student_number = int(request.form['s_code'])
-
-      math_score = students.iloc[student_number]['math score']
-      read_score = students.iloc[student_number]['reading score']
-      write_score = students.iloc[student_number]['writing score']
-
-      # Fill the data dictionary
-      student_data['number'] = 'MS01' + str(student_number).zfill(4)
-      student_data['math_score'] = math_score
-      student_data['read_score'] = read_score
-      student_data['write_score'] = write_score
-      student_data['math_mean'] = math_mean
-      student_data['read_mean'] = read_mean
-      student_data['write_mean'] = write_mean
-      student_data['math_comment'] = check_positioning (math_score, 'math')
-      student_data['read_comment'] = check_positioning (read_score, 'reading')
-      student_data['write_comment'] = check_positioning(write_score, 'writing')
-
+      return render_template('search_brand.html', id_login = request.form['s_code'])
     else: 
-      return render_template('wrong_student.html')
+      return render_template('wrong_page.html')
 
-    # Send data to the next page
-    return render_template('result_page.html', student_data = student_data)
+@app.route('/results', methods=['GET', 'POST'])
+def search_page():
+    print('HERE')
+    if request.method == 'POST':
+        id_input = request.form['brand']
+        return render_template('result.html', obj = id_input, data = filtering_df(id_input, products))
 
 if __name__ == "__main__":  # Makes sure this is the main process
 	app.run( # Starts the site

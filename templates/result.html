@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="../static/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div>
+      <h1>Digital Report:</h1>
+    </div>
+    <table id="customers">
+        <tr>
+            <th>Brand/Supermarket</th>
+            <th># Products in Store</th>
+            <th># Products from Brand</th>
+        </tr>
+        <tr>
+            <td><b>{{obj}}</b></td>
+            <td>{{data['products_fromstore'].iloc[0]}}</td>
+            <td>{{data['products_frombrand'].iloc[0]}}</td>
+        </tr>
+    </table>
+    <div>
+      <p>
+        <a href = enter_login >
+          <button class="button">Go Back to Login</button>
+        </a>
+      </p>
+    </div>
+  </body>
+</html>

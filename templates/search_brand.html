@@ -5,14 +5,13 @@
     <link href="../static/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <form action="/search" method="POST">
+    <h2> Hello {{id_login}}, welcome back. Please enter the brand name or part of it.
+    <form action="/results" method="POST">
       <p>
-        <b>Login Code</b>
-        <input type="text" placeholder="Enter Student Code" name="s_code" required>
+        <b>Enter Brand</b>
       </p>
       <p>
-        <b>Password</b>
-        <input type="password" placeholder="Enter Password" name="s_psw" required>
+        <input type="brand" placeholder="carrefour" name="brand" required>
       </p>
       <div>
         <button type="submit">Go to the Report</button>
